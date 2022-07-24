@@ -33,6 +33,26 @@ const ExploreSection = () => {
         title={"Nike Air Jordan"}
         price={200}
       />
+      <ProductCard 
+        imgName={"vapormax"}
+        title={"Nike Air Jordan"}
+        price={200}
+      />
+      <ProductCard 
+        imgName={"dunk"}
+        title={"Nike Air Jordan"}
+        price={200}
+      />
+      <ProductCard 
+        imgName={"airmax270"}
+        title={"Nike Air Jordan"}
+        price={200}
+      />
+      <ProductCard 
+        imgName={"max971"}
+        title={"Nike Air Jordan"}
+        price={200}
+      />
     </div>
   )
 }
