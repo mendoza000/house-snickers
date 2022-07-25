@@ -1,58 +1,38 @@
+import { useEffect, useState } from "react"
 import ProductCard from "./ProductCard"
 
 const ExploreSection = () => {
+  const [sneakers, setSneakers] = useState([])
+  const getSneakers = async() => {
+    const url = `${window.location.href}api/sneakers`
+    const resp = await fetch(url)
+    const data = await resp.json()
+    setSneakers(data)
+  }
+
+  useEffect(() => {
+    getSneakers()
+  
+    return () => {
+      getSneakers = () => {}
+    }
+  }, [])
+  
+
   return (
     <div className="home__section-container">
-      <ProductCard 
-        imgName={"pegasus"}
-        title={"Nike Air Jordan"}
-        price={200}
-      />
-       <ProductCard 
-        imgName={"jump"}
-        title={"Nike Air Jordan"}
-        price={200}
-      />
-       <ProductCard 
-        imgName={"raptor"}
-        title={"Nike Air Jordan"}
-        price={200}
-      />
-       <ProductCard 
-        imgName={"bascketball"}
-        title={"Nike Air Jordan"}
-        price={200}
-      />
-      <ProductCard 
-        imgName={"travis"}
-        title={"Nike Air Jordan"}
-        price={200}
-      />
-      <ProductCard 
-        imgName={"immortality"}
-        title={"Nike Air Jordan"}
-        price={200}
-      />
-      <ProductCard 
-        imgName={"vapormax"}
-        title={"Nike Air Jordan"}
-        price={200}
-      />
-      <ProductCard 
-        imgName={"dunk"}
-        title={"Nike Air Jordan"}
-        price={200}
-      />
-      <ProductCard 
-        imgName={"airmax270"}
-        title={"Nike Air Jordan"}
-        price={200}
-      />
-      <ProductCard 
-        imgName={"max971"}
-        title={"Nike Air Jordan"}
-        price={200}
-      />
+      {
+        sneakers.map(e => {
+          return (
+            <ProductCard 
+              imgName={e.imgName}
+              title={e.title}
+              price={e.price}
+              key={e.imgName}
+            />
+          )
+        })
+      }
     </div>
   )
 }
