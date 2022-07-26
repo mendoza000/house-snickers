@@ -7,9 +7,8 @@ import SearchBar from './SearchBar'
 const HomeScreen = () => {
   return (
     <div className="animate__animated animate__fadeIn animated__faster">
-      <Navbar />
-      
-      <div className="home__container">
+    
+      <div className="ui__container">
         <h1 className="home__title">
           House Sneakers
         </h1>
