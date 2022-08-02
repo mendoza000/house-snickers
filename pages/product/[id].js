@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
-import { HiChevronLeft, HiOutlineShoppingBag } from 'react-icons/hi'
+import { HiChevronLeft, HiOutlineShoppingBag, HiStar } from 'react-icons/hi'
 import { useSelector } from 'react-redux';
 
 // TODO: Volver a activar el splash
@@ -36,7 +36,7 @@ const product = () => {
   
   
   return (
-    <div className='animate__animated animate__slideInUp ui__container'>
+    <div className='animate__animated animate__slideInUp ui__container product__container'>
       <header className='product__header'>
         <HiChevronLeft 
           className='product__header-icon'
@@ -52,7 +52,34 @@ const product = () => {
         alt={id}
         className='product__img'
       />
-      {product?.title}
+      
+      <div className="product__content">
+        <h2 className='product__title'>
+          Nike {product?.title}
+        </h2>
+        <p className="product__description">
+          {product?.description}
+        </p>
+
+        <div className="product__info">
+          <span className="product__price">
+            ${product?.price}
+          </span>
+
+          <div className="product__score">
+            <HiStar />
+            <HiStar />
+            <HiStar />
+            <HiStar />
+            <HiStar />
+          </div>
+        </div>
+      </div>
+
+      <button className="product__add">
+        Add to cart
+        <HiOutlineShoppingBag />
+      </button>
     </div>
   )
 }
