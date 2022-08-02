@@ -1,24 +1,9 @@
-import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 import ProductCard from "./ProductCard"
 
 const ExploreSection = () => {
-  const [sneakers, setSneakers] = useState([])
-  const getSneakers = async() => {
-    const url = `${window.location.href}api/sneakers`
-    const resp = await fetch(url)
-    const data = await resp.json()
-    setSneakers(data)
-  }
-
-  useEffect(() => {
-    getSneakers()
+  const {sneakers} = useSelector(state => state.products)
   
-    return () => {
-      getSneakers = () => {}
-    }
-  }, [])
-  
-
   return (
     <div className="home__section-container">
       {

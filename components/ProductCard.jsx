@@ -1,11 +1,19 @@
-import Image from 'next/image'
+
+import { useRouter } from 'next/router';
 import {HiStar} from 'react-icons/hi'
 
 const ProductCard = ({imgName, title, price}) => {
-
   const img = require(`../public/${imgName}.png`);
+  const router = useRouter()
+
+  const handleOpen = () => {
+    router.push(`/product/${imgName}`)
+  };
   return (
-    <div className='ui__productcard'>
+    <div 
+      className='ui__productcard'
+      onClick={handleOpen}
+      >
       <img 
         src={img.default.src}
         alt={imgName}
@@ -24,9 +32,6 @@ const ProductCard = ({imgName, title, price}) => {
           <HiStar />
         </span>
       </span>
-      
-
-
     </div>
   )
 }

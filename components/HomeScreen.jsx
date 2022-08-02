@@ -1,10 +1,16 @@
-import React from 'react'
+import { useEffect } from 'react'
 import CategoriesSelector from './CategoriesSelector'
 import ExploreSection from './ExploreSection'
-import Navbar from './Navbar'
 import SearchBar from './SearchBar'
 
 const HomeScreen = () => {
+
+  useEffect(() => {
+    const nav = document.querySelector('.ui__nav')
+    nav.style.display = ''
+  }, [])
+  
+
   return (
     <div className="animate__animated animate__fadeIn animated__faster">
     

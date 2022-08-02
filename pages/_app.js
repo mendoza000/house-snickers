@@ -1,13 +1,18 @@
-import '@styles/styles.scss'
+import {Provider} from 'react-redux';
 import 'normalize.css'
 import 'animate.css'
+import '@styles/styles.scss'
+
 import Layout from '@components/Layout'
+import { store } from 'store';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <Provider store={store}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </Provider>
   )
 }
 
