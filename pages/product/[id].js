@@ -4,7 +4,7 @@ import { HiChevronLeft, HiOutlineShoppingBag, HiStar } from 'react-icons/hi'
 import { useSelector } from 'react-redux';
 
 // TODO: Volver a activar el splash
-const product = () => {
+const Product = () => {
   const [product, setProduct] = useState({})
   const [img, setImg] = useState({})
   const router = useRouter();
@@ -84,4 +84,4 @@ const product = () => {
   )
 }
 
-export default product
+export default Product
