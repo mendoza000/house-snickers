@@ -1,5 +1,4 @@
 
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import {HiStar} from 'react-icons/hi'
 
@@ -8,6 +7,7 @@ const ProductCard = ({imgName, title, price}) => {
   const router = useRouter()
 
   const handleOpen = () => {
+    // todo
     router.push(`/product/${imgName}`)
   };
   return (
@@ -15,12 +15,10 @@ const ProductCard = ({imgName, title, price}) => {
       className='ui__productcard'
       onClick={handleOpen}
       >
-      <Image 
+      <img 
         src={img.default.src}
         alt={imgName}
         className='ui__productcard__image'
-        width={"130"}
-        height={"130"}
       />
 
       <div className="ui__productcard-backimg"></div>

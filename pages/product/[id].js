@@ -1,23 +1,22 @@
-import Image from 'next/image';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
 import { HiChevronLeft, HiOutlineShoppingBag, HiStar } from 'react-icons/hi'
 import { useSelector } from 'react-redux';
 
 // TODO: Volver a activar el splash
-const product = () => {
+const Product = () => {
   const [product, setProduct] = useState({})
   const [img, setImg] = useState({})
   const router = useRouter();
   const {id} = router.query
   const {sneakers} = useSelector(state => state.products)
-
+  // todo
   useEffect(() => {
     setImg(require(`../../public/${
       (id !== undefined)
       ? id
       : "pegasus"
-    }-open.png`).default.src)
+    }-open.png`))
   }, [id])
 
   useEffect(() => {
@@ -34,8 +33,6 @@ const product = () => {
     router.push('/')
   }
 
-  console.log(img)
-
   
   
   return (
@@ -50,10 +47,9 @@ const product = () => {
         </h1>
         <HiOutlineShoppingBag className='product__header-icon'/>
       </header>
-      <Image 
-        src={img}
+      <img 
+        src={img?.default?.src}
         alt={id}
-        layout="responsive"
         className='product__img'
       />
       
@@ -64,7 +60,7 @@ const product = () => {
         <p className="product__description">
           {product?.description}
         </p>
-
+ 
         <div className="product__info">
           <span className="product__price">
             ${product?.price}
@@ -88,4 +84,4 @@ const product = () => {
   )
 }
 
-export default product
+export default Product
