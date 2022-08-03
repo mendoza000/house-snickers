@@ -60,7 +60,7 @@ const Product = () => {
         <p className="product__description">
           {product?.description}
         </p>
-
+ 
         <div className="product__info">
           <span className="product__price">
             ${product?.price}
