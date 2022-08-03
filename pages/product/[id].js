@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
 import { HiChevronLeft, HiOutlineShoppingBag, HiStar } from 'react-icons/hi'
@@ -16,7 +17,7 @@ const Product = () => {
       (id !== undefined)
       ? id
       : "pegasus"
-    }-open.png`))
+    }-open.png`).default.src)
   }, [id])
 
   useEffect(() => {
@@ -33,6 +34,8 @@ const Product = () => {
     router.push('/')
   }
 
+  console.log(img)
+
   
   
   return (
@@ -47,9 +50,10 @@ const Product = () => {
         </h1>
         <HiOutlineShoppingBag className='product__header-icon'/>
       </header>
-      <img 
-        src={img?.default?.src}
+      <Image 
+        src={img}
         alt={id}
+        layout="responsive"
         className='product__img'
       />
       
