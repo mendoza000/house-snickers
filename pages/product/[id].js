@@ -7,10 +7,18 @@ import { useSelector } from 'react-redux';
 // TODO: Volver a activar el splash
 const product = () => {
   const [product, setProduct] = useState({})
-  const [img, setImg] = useState('')
+  const [img, setImg] = useState({})
   const router = useRouter();
   const {id} = router.query
   const {sneakers} = useSelector(state => state.products)
+
+  useEffect(() => {
+    setImg(require(`../../public/${
+      (id !== undefined)
+      ? id
+      : "pegasus"
+    }-open.png`).default.src)
+  }, [id])
 
   useEffect(() => {
     const nav = document.querySelector('.ui__nav')
@@ -20,15 +28,13 @@ const product = () => {
   useEffect(() => {
     setProduct(sneakers.filter(e => e.imgName == id)[0])
   }, [sneakers])
-
-  useEffect(() => {
-    setImg(id)
-  }, [id])
   
 
   const handleReturn = () => {
     router.push('/')
   }
+
+  console.log(img)
 
   
   
@@ -44,14 +50,12 @@ const product = () => {
         </h1>
         <HiOutlineShoppingBag className='product__header-icon'/>
       </header>
-      {
-        (img) && <Image 
-        src={require(`../../public/${img}-open.png`)}
+      <Image 
+        src={img}
         alt={id}
-        layout="intrinsic"
+        layout="responsive"
         className='product__img'
       />
-      }
       
       <div className="product__content">
         <h2 className='product__title'>
