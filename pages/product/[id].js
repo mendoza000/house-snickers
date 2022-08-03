@@ -10,7 +10,7 @@ const Product = () => {
   const router = useRouter();
   const {id} = router.query
   const {sneakers} = useSelector(state => state.products)
-
+  // todo
   useEffect(() => {
     setImg(require(`../../public/${
       (id !== undefined)
