@@ -47,13 +47,13 @@ const Product = () => {
         </h1>
         <HiOutlineShoppingBag className='product__header-icon'/>
       </header>
-      <img 
-        src={img?.default?.src}
-        alt={id}
-        className='product__img'
-      />
       
       <div className="product__content">
+        <img 
+          src={img?.default?.src}
+          alt={id}
+          className='product__img'
+        />
         <h2 className='product__title'>
           Nike {product?.title}
         </h2>

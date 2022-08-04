@@ -1,5 +1,5 @@
 .product__container{
-  padding-bottom: 7rem;
+  height: 100vh;
 }
 .product__header{
   display: flex;
@@ -18,10 +18,15 @@
 }
 .product__img{
   width: 30rem;
+  margin-bottom: 1rem;
 }
 .product__content{
   width: 95%;
   padding: 2rem 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 70%;
 }
 .product__title{
   font-size: 2.2rem;
@@ -53,7 +58,7 @@
   font-size: 2rem;
 }
 .product__add{
-  display: flex;
+  display: absolute;
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
