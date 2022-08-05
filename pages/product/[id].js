@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
-import { HiChevronLeft, HiOutlineShoppingBag, HiStar } from 'react-icons/hi'
+import { HiChevronLeft, HiOutlineShoppingBag, HiStar, HiOutlineHeart} from 'react-icons/hi'
 import { useSelector } from 'react-redux';
 
 // TODO: Volver a activar el splash
@@ -10,7 +10,7 @@ const Product = () => {
   const router = useRouter();
   const {id} = router.query
   const {sneakers} = useSelector(state => state.products)
-  // todo
+
   useEffect(() => {
     setImg(require(`../../public/${
       (id !== undefined)
@@ -18,12 +18,10 @@ const Product = () => {
       : "pegasus"
     }-open.png`))
   }, [id])
-
   useEffect(() => {
     const nav = document.querySelector('.ui__nav')
     nav.style.display = 'none'
   }, [])
-
   useEffect(() => {
     setProduct(sneakers.filter(e => e.imgName == id)[0])
   }, [sneakers])
@@ -32,8 +30,9 @@ const Product = () => {
   const handleReturn = () => {
     router.push('/')
   }
+  const handleAddFav = () => {
 
-  
+  }
   
   return (
     <div className='animate__animated animate__slideInUp ui__container product__container'>
@@ -49,13 +48,22 @@ const Product = () => {
       </header>
       
       <div className="product__content">
-        <img 
-          src={img?.default?.src}
-          alt={id}
-          className='product__img'
-        />
+        <div className="product__content-img">
+          <div className="product__content-img-bg"></div>
+          <img 
+            src={img?.default?.src}
+            alt={id}
+            className='product__img'
+          />
+        </div>
         <h2 className='product__title'>
-          Nike {product?.title}
+          <span>
+            Nike {product?.title}
+          </span>
+
+          <button onClick={handleAddFav}>
+            <HiOutlineHeart />
+          </button>
         </h2>
         <p className="product__description">
           {product?.description}
