@@ -13,10 +13,11 @@ const initialState = {
 export const favoritesReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.GET_FAVORITES:
-      let x = localStorage.getItem('favs')
+      let {favs: list} = JSON.parse(localStorage.getItem('favs'));
+      
       return { 
         ...state,
-        favs: JSON.parse(x)
+        favs: list
       }
 
     case types.SAVE_FAVORITES:

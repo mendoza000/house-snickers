@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
 import { HiChevronLeft, HiOutlineShoppingBag, HiStar, HiOutlineHeart} from 'react-icons/hi'
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite, removeFavorite } from 'store/actions/favorites';
+import { addFavorite, removeFavorite, saveFavorites } from 'store/actions/favorites';
 
 // TODO: Volver a activar el splash
 const Product = () => {
@@ -42,6 +42,8 @@ const Product = () => {
     (!favs.includes(id))
     ? dispatch(addFavorite(id))
     : dispatch(removeFavorite(id))
+
+    dispatch(saveFavorites())
   }
   
   return (

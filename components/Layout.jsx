@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { getFavorites } from 'store/actions/favorites'
 import { getProducts } from 'store/actions/products'
 import Navbar from './Navbar'
 import Splash from './Splash'
@@ -12,6 +13,10 @@ const Layout = ({children}) => {
     setTimeout(() => {
       setLoading(false)
     }, 3000)
+  }, [])
+
+  useEffect(() => {
+    dispath(getFavorites())
   }, [])
 
   useEffect(() => {
