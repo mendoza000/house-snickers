@@ -33,7 +33,10 @@ const Product = () => {
   
 
   const handleReturn = () => {
-    router.push('/')
+    // router.back()
+    (window.history.length <= 2)
+    ? router.push('/')
+    : router.back()
   }
   const handleAddFav = () => {
     (!favs.includes(id))
