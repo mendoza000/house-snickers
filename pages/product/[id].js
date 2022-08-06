@@ -1,12 +1,17 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react';
 import { HiChevronLeft, HiOutlineShoppingBag, HiStar, HiOutlineHeart} from 'react-icons/hi'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, removeFavorite } from 'store/actions/favorites';
 
 // TODO: Volver a activar el splash
 const Product = () => {
   const [product, setProduct] = useState({})
   const [img, setImg] = useState({})
+
+  const dispatch = useDispatch()
+  const {favs} = useSelector(state => state.favorites)
+
   const router = useRouter();
   const {id} = router.query
   const {sneakers} = useSelector(state => state.products)
@@ -31,7 +36,9 @@ const Product = () => {
     router.push('/')
   }
   const handleAddFav = () => {
-
+    (!favs.includes(id))
+    ? dispatch(addFavorite(id))
+    : dispatch(removeFavorite(id))
   }
   
   return (
@@ -61,7 +68,14 @@ const Product = () => {
             Nike {product?.title}
           </span>
 
-          <button onClick={handleAddFav}>
+          <button 
+            onClick={handleAddFav}
+            className={`${
+              (favs.includes(id))
+              ? 'product__title-fav-active'
+              : ''
+            }`}
+            >
             <HiOutlineHeart />
           </button>
         </h2>
